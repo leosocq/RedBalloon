@@ -12,8 +12,10 @@ function loadSong(songFile)
     api = new alphaTab.AlphaTabApi(document.getElementById("tablature"),
         {
             file: songFile,
-            player: { enablePlayer: true, soundFont: "MuseScore_General.sf2" },
+            //player: { enablePlayer: true, soundFont: "https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf2" },
+            // player: { enablePlayer: true, soundFont: "MuseScore_General.sf2" },
             //player: { enablePlayer: true, soundFont: "sonivox.sf2" },
+            player: { enablePlayer: true, soundFont: "https://cdn.jsdelivr.net/npm/@coderline/alphatab@latest/dist/soundfont/sonivox.sf2" },
             cursor: { followCursor: true, autoScroll: true }
         }
     );

@@ -3,7 +3,7 @@ const PASSWORD = "c";
 const loginScreen = document.getElementById("login-screen");
 const app = document.getElementById("app");
 
-//localStorage.removeItem("authenticated");
+localStorage.removeItem("authenticated");
 
 if (localStorage.getItem("authenticated") === "true") {
     loginScreen.style.display = "none";

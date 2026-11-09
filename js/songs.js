@@ -1,7 +1,7 @@
 // liste des chansons
 const songs = [
     {
-        name: "Flys Away",
+        name: "Fly Away",
         file: "songs/fly_away.gp" 
     },
         
