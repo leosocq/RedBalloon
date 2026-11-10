@@ -2,9 +2,17 @@ body {
     font-family: Berlin Sans FB Demi, sans-serif;
     background-color: rgb(34, 34, 34);
     margin: 0;
+    text-align: center;
 }
 
-h1 {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.header h1 {
     margin: 0;
     padding: 20px;
     background: #222;
@@ -20,6 +28,7 @@ h1 {
     display: flex;
     gap: 20px;
     align-items: center;
+    justify-content: center;
     z-index: 9999;
 }
 
@@ -32,6 +41,12 @@ h1 {
     border-bottom: 1px solid #ddd;
 }
 
+
+#login-screen {
+    color: white;
+    align-items: center;
+}
+
 button {
     padding: 8px 15px;
     border: none;
@@ -39,10 +54,13 @@ button {
     background: rgb(198, 40, 40);;
     color: white;
     cursor: pointer;
+    
 }
 
 button:hover {
-    background: rgb(214, 34, 34);;
+    background: rgb(255, 41, 41);;
+    transform: translateY(-3px);
+    border-color: rgba(198,40,40,0.5);
 }
 
 button.active {
@@ -52,16 +70,18 @@ button.active {
 select {
     padding: 10px 14px;
     font-size: 14px;
-    border: 1px solid #444;
+    border: 1px solid rgb(198, 40, 40);
     border-radius: 8px;
     background-color: #2b2b2b;
     color: white;
     cursor: pointer;
-    min-width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
 }
 
 select:hover {
-    border-color: rgb(198, 40, 40);
+    border-color: #444;
+    transform: translateY(-3px);
 }
 
 select:focus {

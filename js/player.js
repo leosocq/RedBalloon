@@ -41,6 +41,10 @@ function initPlayer(){
             buttonPlay();
         }
     });
+
+
+    // se déconnecter:
+    document.getElementById("logout").addEventListener("click", logOut);
 };
 
 // listes de différentes chansons
@@ -107,4 +111,11 @@ function buttonPlay(){
         state.playButton.textContent =  "⏸";
     else
         state.playButton.textContent = "▶";
+}
+
+function logOut(){
+    localStorage.removeItem("authenticated");
+    document.getElementById("remember").checked = false;
+    loginScreen.style.display = "block";
+    app.style.display = "none";
 }

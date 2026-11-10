@@ -1,7 +1,6 @@
 //python -m http.server 8000
 
 // installer l'api alphatabet récupérer la tab
-
 let api = null;
 let firstLaunch = true;
 function loadSong(songFile)
@@ -46,7 +45,6 @@ function loadTracks(score)
        .voices[0]
        .beats[2]
        .notes[0];
-
     note.fret = 7;
     api.renderTracks([state.track]);
     exportGP();*/

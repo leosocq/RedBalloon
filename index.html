@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/icon.ico">
     <title>Red Balloon</title>
 
@@ -11,10 +12,15 @@
 </head>
 
 <body>
-    <h1>👻 Red Balloon 🎈</h1>
+    <div class="header">
+        <button id="logout">Se déconnecter</button>
+        <h1>👻 Red Balloon 🎈</h1>
+        <button id="logout">Se déconnecter</button>
+    </div>
     <div id="login-screen">
         <input type="password" id="password" placeholder="Mot de passe">
         <button id="login">Entrer</button>
+        <br />
         <div>
             <label>
                 <input type="checkbox" id="remember">
@@ -27,9 +33,9 @@
         <div class="top-bar">
             <select id="song-select"></select>
             <select id="track-select"></select>
+            <button id="play">▶</button>
             <button id="solo">Solo</button>
             <button id="mute">Mute</button>
-            <button id="play">▶</button>
         </div>
 
         <div id="tablature"></div>

@@ -1,17 +1,14 @@
-const PASSWORD = "c";
-
 const loginScreen = document.getElementById("login-screen");
 const app = document.getElementById("app");
-
-localStorage.removeItem("authenticated");
 
 if (localStorage.getItem("authenticated") === "true") {
     loginScreen.style.display = "none";
     app.style.display = "block";
     loadSong(songs[0].file);
+    console.log("auto login");
 }
 else {
-    loginScreen.style.display = "flex";
+    loginScreen.style.display = "block";
     app.style.display = "none";
 }
 
@@ -26,12 +23,14 @@ document.addEventListener("keydown", (e) => {
 function checkLogin()
 {
     const password = document.getElementById("password").value;
-    if (password === PASSWORD)
+    if (password === "crazyghost")
     {
         localStorage.setItem("authenticated", "true");
         loginScreen.style.display = "none";
         app.style.display = "block";
         loadSong(songs[0].file);
+        if (!document.getElementById("remember").checked)
+            localStorage.removeItem("authenticated");
     }
     else
     {
