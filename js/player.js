@@ -12,10 +12,11 @@ function initPlayer(){
 
     // liste des chansons
     for (let i = 0; i < songs.length; i++)
-        songList(songs[i]);
+        songList(i);
 
     // liste de pistes
-    state.track = loadedScore.tracks[document.getElementById("track-select").value]
+    state.track = loadedScore.tracks[document.getElementById("track-select").value];
+    api.renderTracks([state.track]);
 
     // changement de piste
     document.getElementById("track-select").addEventListener("change", (e) => 
@@ -26,6 +27,7 @@ function initPlayer(){
     document.getElementById("song-select").addEventListener("change", (e) => 
         { songChange(e.target.value); }
     );
+    document.getElementById("song-select").value = localStorage.getItem("song");
 
     // solo & mute
     document.getElementById("solo").addEventListener("click", buttonSolo);
@@ -42,16 +44,15 @@ function initPlayer(){
         }
     });
 
-
     // se déconnecter:
     document.getElementById("logout").addEventListener("click", logOut);
 };
 
 // listes de différentes chansons
-function songList(song){
+function songList(index){
     const option = document.createElement("option");
-    option.value = song.file;
-    option.textContent = song.name;
+    option.value = songs[index].file;
+    option.textContent = songs[index].name;
     state.songSelect.appendChild(option);
 }
 
@@ -66,6 +67,7 @@ function trackChange(target){
 
     state.track = loadedScore.tracks[target];
     api.renderTracks([state.track]);
+    localStorage.setItem("track", state.track.index);
 }
 
 // changement de chanson
@@ -73,6 +75,13 @@ function songChange(target){
     loadSong(target);
     state.isPlaying = false;
     state.playButton.textContent = "▶";
+    localStorage.setItem("song", target);
+    api.changeTrackMute([state.track], false);
+    api.changeTrackSolo([state.track], false);
+    state.solo = false;
+    state.mute = false;
+    document.getElementById("solo").classList.remove("active", false);
+    document.getElementById("mute").classList.remove("active", false);
 }
 
 // bouton solo
@@ -114,6 +123,11 @@ function buttonPlay(){
 }
 
 function logOut(){
+    if (state.isPlaying){
+        api.playPause();
+        state.isPlaying = false;
+        state.playButton.textContent = "▶";
+    }
     localStorage.removeItem("authenticated");
     document.getElementById("remember").checked = false;
     loginScreen.style.display = "block";

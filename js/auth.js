@@ -1,11 +1,13 @@
 const loginScreen = document.getElementById("login-screen");
 const app = document.getElementById("app");
-
 if (localStorage.getItem("authenticated") === "true") {
     loginScreen.style.display = "none";
     app.style.display = "block";
-    loadSong(songs[0].file);
-    console.log("auto login");
+
+    if (localStorage.getItem("song") != null)
+        loadSong(localStorage.getItem("song"));
+    else
+        loadSong(songs[0].file);
 }
 else {
     loginScreen.style.display = "block";
@@ -23,12 +25,14 @@ document.addEventListener("keydown", (e) => {
 function checkLogin()
 {
     const password = document.getElementById("password").value;
-    if (password === "crazyghost")
-    {
+    if (password === "crazyghost"){
         localStorage.setItem("authenticated", "true");
         loginScreen.style.display = "none";
         app.style.display = "block";
-        loadSong(songs[0].file);
+        if (localStorage.getItem("song") != null)
+            loadSong(localStorage.getItem("song"));
+        else
+            loadSong(songs[0].file);
         if (!document.getElementById("remember").checked)
             localStorage.removeItem("authenticated");
     }

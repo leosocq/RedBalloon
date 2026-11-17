@@ -14,7 +14,8 @@ function loadSong(songFile)
             //player: { enablePlayer: true, soundFont: "https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf2" },
             // player: { enablePlayer: true, soundFont: "MuseScore_General.sf2" },
             //player: { enablePlayer: true, soundFont: "sonivox.sf2" },
-            player: { enablePlayer: true, soundFont: "https://cdn.jsdelivr.net/npm/@coderline/alphatab@latest/dist/soundfont/sonivox.sf2" },
+            //player: { enablePlayer: true, soundFont: "https://cdn.jsdelivr.net/npm/@coderline/alphatab@latest/dist/soundfont/sonivox.sf2" },
+            player: { enablePlayer: true, soundFont: "CrazySoundFont.sf2" },
             cursor: { followCursor: true, autoScroll: true }
         }
     );
@@ -34,6 +35,16 @@ function loadTracks(score)
         option.textContent = track.name;
         select.appendChild(option);
     });
+
+    let trackIndex = Number(localStorage.getItem("track")) || 0;
+    // si la nouvelle chanson a moins de pistes
+    if (trackIndex >= score.tracks.length)
+        trackIndex = 0;
+
+    select.value = trackIndex;
+    state.track = score.tracks[trackIndex];
+    api.renderTracks([state.track]);
+    
     if (firstLaunch){
         initPlayer();
         firstLaunch = false
