@@ -15,7 +15,8 @@ function loadSong(songFile)
             // player: { enablePlayer: true, soundFont: "MuseScore_General.sf2" },
             //player: { enablePlayer: true, soundFont: "sonivox.sf2" },
             //player: { enablePlayer: true, soundFont: "https://cdn.jsdelivr.net/npm/@coderline/alphatab@latest/dist/soundfont/sonivox.sf2" },
-            player: { enablePlayer: true, soundFont: "CrazySoundFont.sf2" },
+            //player: { enablePlayer: true, soundFont: "CrazySoundFont.sf2" },
+            player: { enablePlayer: true, soundFont: "https://leosocq.github.io/RedBalloon/CrazySoundFont.sf2"},
             cursor: { followCursor: true, autoScroll: true }
         }
     );
