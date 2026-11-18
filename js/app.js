@@ -8,15 +8,21 @@ function loadSong(songFile)
     if (api)
         api.destroy?.();
 
+    const isMobile = window.innerWidth < 768;
+
     api = new alphaTab.AlphaTabApi(document.getElementById("tablature"),
         {
             file: songFile,
-            //player: { enablePlayer: true, soundFont: "https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf2" },
-            // player: { enablePlayer: true, soundFont: "MuseScore_General.sf2" },
-            //player: { enablePlayer: true, soundFont: "sonivox.sf2" },
-            //player: { enablePlayer: true, soundFont: "https://cdn.jsdelivr.net/npm/@coderline/alphatab@latest/dist/soundfont/sonivox.sf2" },
+            display: { scale: isMobile ? 0.8 : 1.0 },
+            notation: { elements: new Map([
+                [alphaTab.NotationElement.ScoreTitle, true],
+                [alphaTab.NotationElement.ScoreSubTitle, false],
+                [alphaTab.NotationElement.ScoreArtist, true],
+                [alphaTab.NotationElement.ScoreAlbum, false],
+                [alphaTab.NotationElement.ScoreWords, false],
+                [alphaTab.NotationElement.ScoreMusic, false] ])
+            },
             player: { enablePlayer: true, soundFont: "CrazySoundFont2.sf2" },
-            //player: { enablePlayer: true, soundFont: "https://github.com/leosocq/RedBalloon/releases/download/v1.0/CrazySoundFont.sf2?raw=1"},
             cursor: { followCursor: true, autoScroll: true }
         }
     );

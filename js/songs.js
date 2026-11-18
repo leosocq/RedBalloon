@@ -21,7 +21,7 @@ const songs = [
     },
 
     {   
-        name: "Hiddens Colors",
+        name: "Hidden Colors",
         file: "songs/hidden_colors.gp" 
     },
 ];

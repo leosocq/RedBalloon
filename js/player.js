@@ -45,6 +45,11 @@ function initPlayer(){
     });
 
     // se déconnecter:
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile)  document.getElementById("logout").textContent = "➜]";
+    else  document.getElementById("logout").textContent = "Déconnexion";
+
     document.getElementById("logout").addEventListener("click", logOut);
 };
 
