@@ -13,7 +13,7 @@ function loadSong(songFile)
     api = new alphaTab.AlphaTabApi(document.getElementById("tablature"),
         {
             file: songFile,
-            display: { scale: isMobile ? 0.8 : 1.0 },
+            display: { scale: isMobile ? 0.9 : 1.0 },
             notation: { elements: new Map([
                 [alphaTab.NotationElement.ScoreTitle, true],
                 [alphaTab.NotationElement.ScoreSubTitle, false],
@@ -66,4 +66,16 @@ function loadTracks(score)
     note.fret = 7;
     api.renderTracks([state.track]);
     exportGP();*/
+
+    /*api.scoreLoaded.on(score => {
+    const note =
+        score.tracks[1]
+             .staves[0]
+             .bars[14]
+             .voices[0]
+             .beats[0]
+             .notes[0];
+
+    console.log(note);
+});*/
 }

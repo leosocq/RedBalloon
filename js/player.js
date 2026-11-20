@@ -54,11 +54,18 @@ function initPlayer(){
 };
 
 // listes de différentes chansons
-function songList(index){
+function songList(index) {
+    const song = songs[index];
+    let group = document.querySelector(`optgroup[label="${song.category}"]`);
+    if (!group) {
+        group = document.createElement("optgroup");
+        group.label = song.category;
+        state.songSelect.appendChild(group);
+    }
     const option = document.createElement("option");
-    option.value = songs[index].file;
-    option.textContent = songs[index].name;
-    state.songSelect.appendChild(option);
+    option.value = song.file;
+    option.textContent = song.name;
+    group.appendChild(option);
 }
 
 //changement de piste
